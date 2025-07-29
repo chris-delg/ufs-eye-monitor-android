@@ -3,6 +3,7 @@ package com.qualcomm.eyemonitorinterface
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private external fun runUFSEOMCommand()
+    private external fun runUfseom(args: Array<String>): Int
 
     private lateinit var submitBttn: Button
     private lateinit var ufsResult: TextView
@@ -32,9 +33,11 @@ class MainActivity : AppCompatActivity() {
 
         submitBttn = findViewById(R.id.submitButton)
         ufsResult = findViewById(R.id.ufsResult)
+        val args = arrayOf("./ufs_eom","-h")
 
         submitBttn.setOnClickListener{
-
+            val result: Int = runUfseom(args)
+            Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }

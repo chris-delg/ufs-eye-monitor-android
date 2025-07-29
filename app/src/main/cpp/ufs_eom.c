@@ -37,6 +37,14 @@
 
 #define STRING_BUFFER_SIZE 0x24
 
+// android logging definitions
+#include <android/log.h>
+
+#define LOG_TAG "TEST"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+
+
 struct eom_result
 {
 	int lane;
@@ -559,6 +567,7 @@ static int parse_args(int argc, char *argv[])
 	else if (!strcmp(argv[1], "-h"))
 	{
 		printf("%s\n", ufseom_help);
+        LOGI("%s", ufseom_help);
 		return ret;
 	}
 
