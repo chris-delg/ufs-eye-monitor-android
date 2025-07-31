@@ -7,14 +7,166 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Header -->
+    <TextView
+        android:id="@+id/customizeParametersHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Customize Parameters"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/customizeParametersDivider"
+        android:layout_width="320dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="24dp"
+        android:background="#6200EE"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customizeParametersHeading" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Views on left side -->
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="Submit"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pathLabel" />
+
+    <TextView
+        android:id="@+id/peerLocalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Peer or Local"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/useRandomDataLabel"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/customizeParametersDivider" />
+
+    <TextView
+        android:id="@+id/useRandomDataLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Use Random Data"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/peerLocalLabel"
+        app:layout_constraintTop_toBottomOf="@+id/peerLocalLabel" />
+
+    <TextView
+        android:id="@+id/laneNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Lane Number"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/useRandomDataLabel"
+        app:layout_constraintTop_toBottomOf="@+id/useRandomDataLabel" />
+
+    <TextView
+        android:id="@+id/voltageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Voltage"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/laneNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/laneNumberLabel" />
+
+    <TextView
+        android:id="@+id/targetLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Target Test Count"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/voltageLabel"
+        app:layout_constraintTop_toBottomOf="@+id/voltageLabel" />
+
+    <TextView
+        android:id="@+id/pathLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="ufs-bsg Device Path"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/targetLabel"
+        app:layout_constraintTop_toBottomOf="@+id/targetLabel" />
+
+    <!-- Views on right side -->
+    <Spinner
+        android:id="@+id/peerLocalSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/peerLocalLabel"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/peerLocalLabel" />
+
+    <CheckBox
+        android:id="@+id/useRandomDataCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/useRandomDataLabel"
+        app:layout_constraintStart_toStartOf="@+id/peerLocalSpinner"
+        app:layout_constraintTop_toTopOf="@+id/useRandomDataLabel" />
+
+    <Spinner
+        android:id="@+id/laneNumberSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/laneNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/useRandomDataCheckbox"
+        app:layout_constraintTop_toTopOf="@+id/laneNumberLabel" />
+
+    <EditText
+        android:id="@+id/voltageInput"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Optional"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toBottomOf="@+id/voltageLabel"
+        app:layout_constraintStart_toStartOf="@+id/laneNumberSpinner"
+        app:layout_constraintTop_toTopOf="@+id/voltageLabel" />
+
+    <EditText
+        android:id="@+id/targetInput"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Optional"
+        android:inputType="numberSigned"
+        app:layout_constraintBottom_toBottomOf="@+id/targetLabel"
+        app:layout_constraintStart_toStartOf="@+id/voltageInput"
+        app:layout_constraintTop_toTopOf="@+id/targetLabel" />
+
+    <EditText
+        android:id="@+id/devicePathInput"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Required"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/pathLabel"
+        app:layout_constraintStart_toStartOf="@+id/targetInput"
+        app:layout_constraintTop_toTopOf="@+id/pathLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
